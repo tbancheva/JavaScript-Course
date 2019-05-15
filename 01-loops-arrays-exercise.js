@@ -66,7 +66,7 @@ var rulers = [
 // Разбира се, искаме да видим имената изписани според конвенциите за имена на съществителни-собствени.
 function toCamelCaseCyr(str){
 	let strLower = str.toLowerCase();
-	return strLower[0].toUpperCase() + strLower.substring(0);
+	return strLower[0].toUpperCase() + strLower.substring(1);
 }
 
 for(let i = 0; i<rulers.length; i++){
@@ -80,6 +80,8 @@ for(let i = 0; i<rulers.length; i++){
 		console.log(`${rulers[i][0]} е управлявал ${yearsOfRule} години.`);
 	}
 }
+
+
 
 
 
