@@ -47,11 +47,9 @@ let Manager = function(name, age, managees){
 Manager.prototype.__proto__ = Person.prototype;
 Manager.prototype.greet = function(){
 	console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old`);
-	console.log(`I manage ${this.managees}`);
-
 	let str = "";
-	for(developer in this.managees){
-		str += developer.name;
+	for(let i = 0; i <this.managees.length; i++){
+		str += this.managees[i].name + ', ';
 	}
 	console.log(`I manage ` + str);
 }
