@@ -46,7 +46,8 @@ let Manager = function(name, age, managees){
 // Manager objects should inherit all methods from Person:
 Manager.prototype.__proto__ = Person.prototype;
 Manager.prototype.greet = function(){
-	console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old`);
+	Person.prototype.greet.call(this);
+
 	let str = "";
 	for(let i = 0; i <this.managees.length; i++){
 		str += this.managees[i].name + ', ';
@@ -61,8 +62,9 @@ let Developer = function(name, age, skillset){
 }
 // Developer objects should inherit all methods from Person:
 Developer.prototype.__proto__ = Person.prototype;
+//Developer.prototype = Object.create(Person.constructor);
 Developer.prototype.greet = function(){
-	console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old`);
+	Person.prototype.greet.call(this);
 	console.log(`I know ${this.skillset}`);
 }
 
@@ -73,7 +75,6 @@ let pesho = new Developer('Petar Petrov', 19, ['JavaScript', 'Angular', 'React',
 // Manager instance
 let gates = new Manager('Bill Gates', 43, [maria, pesho]);
 
-// use the objects:
 maria.greet();
 pesho.greet();
 gates.greet();

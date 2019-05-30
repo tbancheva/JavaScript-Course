@@ -1,0 +1,125 @@
+-------Lecture 2 Notes-------
+
+javascript - има само обекти, класове НЕ съществуват
+интерпретируем език - умира на реда, в който има грешка, не се троши цялата програма
+
+let, const - ECMAScript6 2015 година, след това -> Ecma2016, Ecma 2017....- няма версии на JavaScript, а само на стандарта ES
+strict mode - след ES5,6 - забраняват се лоши практики, позволени от езика, "use strict" - на 1вия ред на файла, иначе е per scope
+transpiler - от по-нова версия превежда JavaScript до стара версия за стари браузъри, позволява да се ползват нов синтакс и нови фичъри
+``- backticks от ES6 
+
+statement - действие без резултат, няма как да се изчислят (var x;)
+expression - връща резултат (x = 4;)
+
+variables - кутийки, label, в които може да им всичко
+var - асоцира име с клетка от паметта
+null, undefined - тип данни, които имат само една стойност
+undefined - когато ние не сме сложили нищо
+typeof - може дая се използва и като оператор и като функция - typeof x, typeof(x)
+let variables - NO HOISTING
+2 phases js execution - 1st- променливите, декларирани като var се заделят в рам паметта като сочат към undefined, нищо не се изпълнява, 2nd - изпълнение
+1ва фаза - function declaration - compiled code in ram   //function foo(){..}
+         - function expression(can not be called before being defined)  //var bar = function(){..}
+
+конструктори - функции, които съзадват обекти
+вс примитиви - immutable
+objects- mutable (arrays, functions(function - object that is callable))
+let y =5, then let y -> exception, var x, var x - ok
+
+
+-------Lecture 3 Notes-------
+
+сравнение(==) - винаги true или false
+=== - сравнение по тип и по стойнос, винаги е за предпочитане
+4 && 5 - 5 ако и двете са true връща expr2
+&& || - не връщат само true или false
+username = username || 'anonymous'
+if is a statement - evaluates but cannot be evaluated
+?: - expression - returns a value
+switch - uses ===
+
+масив - обект, има си пропъртита, mutable
+arr.length =0 // deletes the array
+console.dir(arr) - разкрива истинската структура на обект
+push - add to end
+var arr = [function(){console.log('1')}]  --- arr[0]();
+
+object = properties + methods
+access object properties - pesho['last name'] - ok // pesho.last name - does not work
+2 objects are equal if they point to the same object // address comparison
+
+function with no retun - undefined, when constructor method is called without new
+functions -  конкретни стойности, вс, което правим с числа
+function definition - function foo(){...}, foo = 5 //ok
+function expression - let foo = function(){...}; задължително ; м-у expressions, cannot be hoisted
+
+var - в скоупа на целия файл, ако не е във функция
+let - видима само в {}, за разлика от var, за това се препоръчва
+
+-------Lecture 4 Notes-------
+
+iife - the problem with global scope, предимно ако пишем библиотеки
+jquery - once upon a time, useful for not writing the same code a couple of times for different browsers
+if there is src in the script tag in html and content in the tag, the conteent will not be executed
+() - изчислява нещата вътре - (function(){...})(); заграждаме анонимната функция за да се изчислят нещата вътре и да може да бъде извикана
+callback - ф-я която ще е извъкана от друг
+function as argument - callback, example with setTimeout
+closure - има ситуации в които наблюдаваме closures, имаме възможността да извикваме ф-я извън нейния скоуп
+! само функциите правят local scope, if(){ var x; // not local scope, let x; //local scope}
+${i} - когато се execute-ва се търси какво има в i, нищо че вече е компилирано
+js - array, browser - HTMLCollection
+
+прототип - обект, който може да се ползва и съществува
+
+-------Lecture 5 Notes-------
+
+typescript - привидна енкапсулация
+ако викнем конструктор ф-я без new - undefined
+for in
+ES 6 - 'drive' : function(){...}  ==== drive(){...} - the latter is allowed only in literal
+install live-server
+
+objects created with factory - broken prototype chain
+__proto__ - change thunder proto only in literal
+
+-------Lecture 6 Notes-------
+
+няма как да знаем какво има в this само от самата ф-я - зависи как е извикана
+this без new, use strict - глобалния обект - window, global
+=== с обекти връща true когато двата обекта имат еднакъв адрес
+променливи, започващи с __ се считат за private, нещо като конвенция
+apply, call, bind - определя кой ще е this обекта
+apply - the function arguements should be passed in an array
+call - the function parameter can be passed separated with commas
+bind - връща ф-я, не я извиква 
+
+let - block scope variable, var - if in scope (if, for) and not in function - global scope
+тяло на ф-я - var, let, const - function scope
+let - recommended, does not get hoisted, cannot declare variable with the same name more than once
+const - like let scope-wise, the assignment can be used only once
+pure function - no side effect
+arrow function - 1 действие
+when using arrow functions () => { many statements but explicit return is needed (otherwise returns undefined)}, if {} are omitted the return word can be omitted as well
+
+-------Lecture 7 Notes-------
+
+arrow function - this lexically scoped, good for callbacks(forEach), never for methods
+methods in objects - arrow functions - this is not the object, какво има в this на предния ред на който е написана
+apply,call,bind - не работят с arrow functions
+arguments - iterable object (array like but NOT array -> forEcach does not work)
+arrow functions - no default arguments array
+default parameters - function foo(x=1, y=2, z=3){...};
+spread operator - разпакетира iterable objects, при извикване на функция, констуиране на масив
+rest operator - пакетира, обратното на spread
+object.assign - makes shallow copy of an object, but mutable variables are still references
+JSON.stringify - прави js обект на json string
+JSON.parse - прави json string на js обект
+
+
+
+-------useful sites-------
+caniuse.com - front end кое от кой браузър се поддържа, packagecontrol.io, mdn - като w3schools
+github.com/WWWCourses - course repo
+ctrl + ` - sublime console - package installation problems
+gist - github - като pastebin
+
